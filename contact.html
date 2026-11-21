@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contact Lolak Shah Sultan about frontend internships and web projects." />
+    <title>Contact - Lolak Shah Sultan</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="theme.js" defer></script>
+    <script src="contact.js" defer></script>
+  </head>
+  <body>
+    <!-- HEADER with navigation -->
+    <header class="site-header">
+      <a href="index.html" class="logo">Lolak Shah Sultan</a>
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><button id="theme-toggle" type="button">Dark mode</button></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h1>Contact me</h1>
+      <p>Have a question or an internship opportunity? Send me a message.</p>
+
+      <!-- novalidate lets our JavaScript show the error messages (the HTML rules are still written on each field) -->
+      <form id="contact-form" novalidate>
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required minlength="3" autocomplete="name" aria-describedby="name-error" />
+        <p class="error" id="name-error"></p>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" aria-describedby="email-error" />
+        <p class="error" id="email-error"></p>
+
+        <label for="subject">Subject</label>
+        <select id="subject" name="subject" required aria-describedby="subject-error">
+          <option value="">Choose a subject</option>
+          <option>Internship opportunity</option>
+          <option>Project question</option>
+          <option>Just saying hello</option>
+        </select>
+        <p class="error" id="subject-error"></p>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required minlength="20" aria-describedby="message-error"></textarea>
+        <p class="error" id="message-error"></p>
+
+        <fieldset>
+          <legend>How did you hear about me?</legend>
+          <label><input type="radio" name="heard" value="search" checked /> Search engine</label>
+          <label><input type="radio" name="heard" value="friend" /> A friend</label>
+          <label><input type="radio" name="heard" value="social" /> Social media</label>
+        </fieldset>
+
+        <label class="check"><input id="consent" name="consent" type="checkbox" required aria-describedby="consent-error" /> I agree to be contacted about my message</label>
+        <p class="error" id="consent-error"></p>
+
+        <button type="submit">Send message</button>
+      </form>
+
+      <p id="success-message" class="success" role="status" hidden></p>
+    </main>
+
+    <!-- FOOTER with links -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Lolak Shah Sultan</p>
+      <ul>
+        <li><a href="https://github.com/lolakshah">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/lolak-shah-sultan-529951306/">LinkedIn</a></li>
+        <li><a href="mailto:lolakshah1000@gmail.com">Email me</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>
