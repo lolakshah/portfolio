@@ -1,0 +1,99 @@
+/* 1. RESET (always first) */
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+img { max-width: 100%; display: block; height: auto; }
+
+/* 2. VARIABLES: colours, radius and spacing live here (light theme) */
+:root {
+  --bg: #f8fafc; --surface: #ffffff; --text: #0f172a; --muted: #475569;
+  --border: #cbd5e1; --primary: #1d4ed8; --on-primary: #ffffff; --error: #b91c1c;
+  --radius: 0.5rem;
+  --space-1: 0.5rem; --space-2: 1rem; --space-3: 2rem;
+}
+
+/* Dark theme 1: follows the computer's setting (unless the user chose light) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1120; --surface: #111a2e; --text: #e2e8f0; --muted: #a8b5c6;
+    --border: #334155; --primary: #93c5fd; --on-primary: #0b1120; --error: #fca5a5;
+  }
+}
+
+/* Dark theme 2: chosen with the toggle button (JavaScript sets data-theme) */
+:root[data-theme="dark"] {
+  --bg: #0b1120; --surface: #111a2e; --text: #e2e8f0; --muted: #a8b5c6;
+  --border: #334155; --primary: #93c5fd; --on-primary: #0b1120; --error: #fca5a5;
+}
+
+/* 3. BASE STYLES (mobile first) */
+body { font-family: system-ui, sans-serif; line-height: 1.6; background: var(--bg); color: var(--text); }
+h1 { font-size: clamp(2rem, 6vw, 3.25rem); line-height: 1.15; margin-bottom: var(--space-2); }
+h2 { font-size: clamp(1.4rem, 4vw, 1.9rem); margin-bottom: var(--space-1); }
+p, ul { margin-bottom: var(--space-2); }
+a { color: var(--primary); }
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; } /* links, buttons, inputs */
+
+.container { max-width: 70rem; margin-inline: auto; padding: var(--space-3) var(--space-2); }
+section { margin-bottom: var(--space-3); }
+
+/* 4. HEADER AND NAVBAR (Flexbox) */
+.site-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-1); padding: var(--space-2); background: var(--surface); border-bottom: 1px solid var(--border); }
+.logo { font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; }
+.nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); list-style: none; padding: 0; margin: 0; }
+.nav-links a { color: var(--text); padding: 0.5rem 0; }
+.nav-links a[aria-current="page"] { font-weight: 800; }
+
+/* 5. BUTTONS */
+.btn, button { display: inline-block; padding: 0.6rem 1.25rem; border: 2px solid var(--primary); border-radius: var(--radius); background: var(--primary); color: var(--on-primary); font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
+#theme-toggle { background: transparent; color: var(--text); border-color: var(--border); }
+
+/* 6. HOME PAGE */
+.hero { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.hero > div { flex: 1 1 18rem; }
+.hero img { width: 100%; max-width: 25rem; border-radius: var(--radius); }
+.role { font-size: 1.25rem; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: var(--space-1); list-style: none; padding: 0; }
+.tags li { padding: 0.15rem 0.75rem; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); font-size: 0.9rem; }
+
+/* 7. PROJECTS PAGE: search, filter and Grid of cards */
+.filters { display: grid; gap: var(--space-2); }
+label { display: block; margin-bottom: 0.25rem; font-weight: 700; }
+input, select, textarea { width: 100%; padding: 0.65rem 0.75rem; border: 2px solid var(--muted); border-radius: var(--radius); background: var(--surface); color: var(--text); font: inherit; }
+.message { font-weight: 700; }
+
+.project-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-2); }  /* 1 column on phones */
+.card { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-2); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); transition: transform 0.2s; }
+.card:hover { transform: translateY(-4px); }
+.card h2, .card p, .card ul { margin-bottom: 0; }
+.year { color: var(--muted); font-size: 0.9rem; }
+
+/* 8. CONTACT FORM */
+form { max-width: 40rem; padding: var(--space-2); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+form label { margin-top: var(--space-2); }
+form button { margin-top: var(--space-2); }
+input[type="radio"], input[type="checkbox"] { width: auto; }
+fieldset { margin-top: var(--space-2); padding: var(--space-1) var(--space-2) var(--space-2); border: 2px solid var(--border); border-radius: var(--radius); }
+fieldset label { display: inline-block; margin-right: var(--space-2); font-weight: 400; }
+.check { font-weight: 400; }
+.error { min-height: 1.5rem; margin: 0.25rem 0 0; color: var(--error); font-weight: 700; }
+[aria-invalid="true"] { border-color: var(--error); }
+.success { max-width: 40rem; margin-top: var(--space-2); padding: var(--space-2); border: 2px solid var(--primary); border-radius: var(--radius); font-weight: 700; }
+
+/* 9. FOOTER */
+.site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); padding: var(--space-2); background: var(--surface); border-top: 1px solid var(--border); }
+.site-footer p, .site-footer ul { margin: 0; }
+.site-footer ul { display: flex; gap: var(--space-2); list-style: none; padding: 0; }
+
+/* 10. RESPONSIVE: bigger screens (mobile-first, so we use min-width) */
+@media (min-width: 640px) {
+  .project-grid { grid-template-columns: repeat(2, 1fr); }  /* 2 columns */
+  .filters { grid-template-columns: 2fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .project-grid { grid-template-columns: repeat(3, 1fr); }  /* 3 columns */
+}
+
+/* Respect people who do not want animation */
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .card:hover { transform: none; }
+}
