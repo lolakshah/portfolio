@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Browse my web development projects and filter them by technology." />
+    <title>Projects - Lolak Shah Sultan</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="theme.js" defer></script>
+    <script src="projects.js" defer></script>
+  </head>
+  <body>
+    <!-- HEADER with navigation -->
+    <header class="site-header">
+      <a href="index.html" class="logo">Lolak Shah Sultan</a>
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><button id="theme-toggle" type="button">Dark mode</button></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h1>My Projects</h1>
+
+      <section class="filters" aria-label="Filter projects">
+        <div>
+          <label for="search">Search by title or technology</label>
+          <input id="search" type="search" placeholder="Try 'weather' or 'css'" />
+        </div>
+        <div>
+          <label for="tech-filter">Technology</label>
+          <select id="tech-filter">
+            <option value="All">All technologies</option>
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JavaScript</option>
+            <option>Python</option>
+            <option>Pandas</option>
+            <option>Matplotlib</option>
+            <option>Scikit-learn</option>
+            <option>Unity</option>
+            <option>C++</option>
+          </select>
+        </div>
+      </section>
+
+      <p id="result-count" aria-live="polite"></p>
+      <p id="empty-message" class="message"></p>
+
+      <!-- The project cards are created by projects.js -->
+      <section id="project-grid" class="project-grid" aria-label="Project list"></section>
+    </main>
+
+    <!-- FOOTER with links -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Lolak Shah Sultan</p>
+      <ul>
+        <li><a href="https://github.com/lolakshah">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/lolak-shah-sultan-529951306/">LinkedIn</a></li>
+        <li><a href="mailto:lolakshah1000@gmail.com">Email me</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>
