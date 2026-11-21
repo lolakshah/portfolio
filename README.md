@@ -4,7 +4,7 @@ A responsive 3-page portfolio built with HTML, CSS and JavaScript only (CS-554 A
 
 Live site: https://lolakshah.github.io/portfolio/
 
-![Screenshot of the portfolio]
+![Screenshot of the portfolio](screenshot.png)
 
 Features
 - Home, Projects and Contact pages with semantic HTML
